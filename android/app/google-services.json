@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "907146853013",
+    "firebase_url": "https://checkpeople.firebaseio.com",
+    "project_id": "checkpeople",
+    "storage_bucket": "checkpeople.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907146853013:android:e84ba3e7b38b422ea1799c",
+        "android_client_info": {
+          "package_name": "com.checkpeople"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907146853013-05kpce6tsq6bugj0patufl4rg2de509i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASUOouQOHLdtd8dhKW4AM4uxMKcrc_hVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907146853013-05kpce6tsq6bugj0patufl4rg2de509i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
