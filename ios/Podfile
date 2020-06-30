@@ -79,6 +79,8 @@ target 'checkpeople' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+
   target 'checkpeopleTests' do
     inherit! :complete
     # Pods for testing

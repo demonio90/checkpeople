@@ -136,6 +136,8 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+
+        missingDimensionStrategy 'react-native-camera', 'general'
     }
     splits {
         abi {
@@ -190,13 +192,19 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-firebase')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-
     implementation 'com.android.support:multidex:1.0.3'
+
+    // Firebase dependencies
+    implementation "com.google.android.gms:play-services-base:16.1.0"
+    implementation "com.google.firebase:firebase-core:16.0.9"
+    implementation "com.google.firebase:firebase-firestore:19.0.0"
+    implementation "com.google.firebase:firebase-storage:17.0.0"
+    /***********************/
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
