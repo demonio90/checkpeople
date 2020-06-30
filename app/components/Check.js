@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { ImageBackground, TextInput, Text, StyleSheet, View, Animated } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { ImageBackground, TextInput, Text, StyleSheet, View, Animated, StatusBar } from 'react-native';
 import { Icon, Button, Spinner, Toast } from 'native-base';
 import { Snackbar } from 'react-native-paper';
 import Tts from 'react-native-tts';
 import { RNCamera } from 'react-native-camera';
 import uuid from 'random-uuid-v4';
 import { validateId } from '../utils/Validations';
+import KeepAwake from 'react-native-keep-awake';
 
 import firebase from 'react-native-firebase';
 
@@ -17,6 +18,12 @@ const Check = () => {
     const [fadeIn, setFadeIn] = useState(new Animated.Value(0));
     const [visible, setVisible] = useState(false);
     const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        let isSubscribed = true;
+        isSubscribed && KeepAwake.activate();
+        return () => isSubscribed = false;
+    }, []);
 
     const changedInput = e => {
         setErrors({error: false, message: 'El campo Identificación no puede estar vacío', input: false});
@@ -70,7 +77,7 @@ const Check = () => {
         setIsLoading(false);
         setIdentification(null);
         takePicture(user);
-        if (user.inout) {
+        if (!user.inout) {
             AnimatedText();
             setMessage(`Hola ${user.name}`);
             Tts.speak(`Hola ${user.name}`);
@@ -120,6 +127,7 @@ const Check = () => {
     
     return (
         <ImageBackground source={require('../../assets/img/bg.png')} style={styles.backgroundImg} imageStyle={styles.resize}>
+            <StatusBar hidden={SVGComponentTransferFunctionElement}/>
             <RNCamera
                 ref={(ref) => { camera = ref }}
                 type={RNCamera.Constants.Type.front}
@@ -171,8 +179,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         //paddingHorizontal: 20,
-        alignItems: 'center',
-
+        alignItems: 'center'
     },
     resize: {
         resizeMode: 'cover'

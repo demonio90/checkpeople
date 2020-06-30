@@ -81,6 +81,8 @@ target 'checkpeople' do
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
 
+  pod 'react-native-keep-awake', :path => '../node_modules/react-native-keep-awake'
+
   target 'checkpeopleTests' do
     inherit! :complete
     # Pods for testing
